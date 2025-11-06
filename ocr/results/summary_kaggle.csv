@@ -1,0 +1,4 @@
+engine,avg_cer,avg_wer,avg_time
+paddleocr,0.1586,0.2668,1.0971
+doctr,0.1037,0.3861,1.6075
+tesseract,0.3331,0.6058,0.2671

@@ -7,14 +7,8 @@ from sklearn.metrics import (accuracy_score, precision_score, recall_score,
                              confusion_matrix, make_scorer)
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.neural_network import MLPClassifier
-from sklearn.tree import DecisionTreeClassifier
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
-from sklearn.feature_selection import VarianceThreshold, SelectKBest, mutual_info_classif
 import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
@@ -84,7 +78,7 @@ class MLClassifierComparator:
         self.random_state = random_state
         self.models = {
             'Random Forest': RandomForestClassifier(random_state=random_state),
-            'XGBoost': XGBClassifier(random_state=random_state, use_label_encoder=False, eval_metric='logloss'),
+            'XGBoost': XGBClassifier(random_state=42, use_label_encoder=False, eval_metric='mlogloss'),
             'SVM': SVC(random_state=random_state, probability=True)
         }
         self.results = {}
@@ -103,7 +97,7 @@ class MLClassifierComparator:
         """
         # Select features
         if feature_cols is None:
-            feature_cols = [col for col in df.columns if col not in [target_col, 'Compound_CID']]
+            feature_cols = [col for col in df.columns if col not in [target_col, 'CID']]
 
         self.feature_names = feature_cols
         X = df[feature_cols].copy()

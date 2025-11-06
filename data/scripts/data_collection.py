@@ -1,8 +1,6 @@
 import requests
 import pandas as pd
 import time
-import re
-import numpy as np
 
 INPUT_FILE = "../pubchem_carcinogen.csv"
 OUTPUT_FILE = "../carcinogen_smiles.csv"
