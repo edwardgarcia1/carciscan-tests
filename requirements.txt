@@ -1,0 +1,14 @@
+duckdb~=1.4.1
+pyarrow~=22.0.0
+pandas~=2.3.3
+numpy~=2.2.6
+pytesseract~=0.3.13
+paddleocr~=3.3.1
+rdkit~=2025.9.1
+requests~=2.32.5
+tqdm~=4.67.1
+matplotlib~=3.10.7
+seaborn~=0.13.2
+scikit-learn~=1.7.2
+xgboost~=3.1.1
+lightgbm~=4.6.0
