@@ -42,9 +42,9 @@ y = df[TARGET_COLUMN]
 
 # --- 2. Preprocess Features and Target ---
 # Handle missing values in features by imputing with the mean
-print(f"Missing values in features before imputation: {X.isnull().sum().sum()}")
-X.fillna(X.mean(), inplace=True)
-print(f"Missing values in features after imputation: {X.isnull().sum().sum()}")
+# print(f"Missing values in features before imputation: {X.isnull().sum().sum()}")
+# X.fillna(X.mean(), inplace=True)
+# print(f"Missing values in features after imputation: {X.isnull().sum().sum()}")
 
 # Clip extreme values to prevent XGBoost errors
 print(f"Clipping feature values to the range [{min_clip_value}, {max_clip_value}]...")

@@ -15,7 +15,7 @@ from collections import Counter
 
 # --- Configuration ---
 DATASET_PATH = '../data/dataset.csv'
-MODEL_FILE_PATH = '../models/category_multilabel.pkl'
+MODEL_FILE_PATH = '../models/category.pkl'
 RESULTS_DIR = 'results'
 PLOT_PATH = os.path.join(RESULTS_DIR, 'category_confusion_matrices.png')
 EXCLUDE_COLUMNS = ['Carcinogenicity', 'CID', 'Route']
@@ -88,9 +88,9 @@ print("Final labels for model:", mlb.classes_)
 
 # --- Preprocess Features ---
 # Handle missing values in features by imputing with the mean
-print(f"\nMissing values in features before imputation: {X.isnull().sum().sum()}")
-X.fillna(X.mean(), inplace=True)
-print(f"Missing values in features after imputation: {X.isnull().sum().sum()}")
+# print(f"\nMissing values in features before imputation: {X.isnull().sum().sum()}")
+# X.fillna(X.mean(), inplace=True)
+# print(f"Missing values in features after imputation: {X.isnull().sum().sum()}")
 
 # Clip extreme values to prevent XGBoost errors
 print(f"Clipping feature values to the range [{min_clip_value}, {max_clip_value}]...")
