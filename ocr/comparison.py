@@ -19,6 +19,8 @@ class OCRComparator:
             use_doc_orientation_classify=False,
             use_doc_unwarping=False,
             use_textline_orientation=False,
+            text_det_limit_side_len=480, #480: 0.1461 0.2554, 0.5879s
+            text_det_limit_type='max',
             lang="en",
         )
 
@@ -124,15 +126,11 @@ class OCRComparator:
         if not result or not result[0]:
             return "", end_time - start_time
 
-        # Extract text
-        text_parts = []
-        if result and len(result) > 0:
-            for res_dict in result:
-                if 'rec_texts' in res_dict:
-                    text_parts.extend(res_dict['rec_texts'])
+        for res in result:
+            texts = res['rec_texts']
 
-        full_text = " ".join(text_parts)
-        return full_text, round(end_time - start_time, 4)
+            single_line = " ".join(texts)
+        return single_line, round(end_time - start_time, 4)
 
     def run_doctr(self, image_path: str) -> Tuple[str, float]:
         """Run DocTR and return text and processing time"""
